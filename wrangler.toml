@@ -1,0 +1,13 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "markdown-hosted"
+main = "src/index.ts"
+compatibility_date = "2024-04-19"
+workers_dev = false
+
+[vars]
+INDEX_SHA256 = "f5020a639cf7eccd04d108d055d8e3824b925a3ef72e223040ef09e99c329980"
+MAX_UPLOAD_SIZE_MB = "25"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "982ebdc186914e87a27d89dd00acf479"
