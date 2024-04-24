@@ -26,6 +26,8 @@ export default {
                 return new Response('Bad Request', { status: 400 })
             }
             const key = sha256(content).toString()
+            const content = await env.KV.get(`html-sha1:${key}`)
+            if (!content) { return new Response('Existed', { status: 403, headers: { 'Content-Type': 'text/plain' } }) }
             await env.KV.put(`html-sha1:${key}`, content)
             const origin = new URL(request.url).origin
             return new Response(`${origin}/${key}\n`, { status: 302, headers: { 'Location': `${origin}/${key}` } })
